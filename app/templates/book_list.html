@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<ul class="list-group">
+    {% for book in books %}
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{% static 'img/1.jpg' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'img/2.jpg' %}" class="d-block w-100" alt="...">
+          </div>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <img src="{% static 'img/images.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{ book.full_name }}</h5>
+            <p class="card-text">Описание</p>
+            <a href="{% url 'book-update' book.pk %}" class="btn btn-outline-success">Редактировать</a>
+            <a href="{% url 'book-delete' book.pk %}" class="btn btn-outline-danger">Удалить</a>
+        </div>
+    </div>
+    {% endfor %}
+</ul>
+{% endblock %}
